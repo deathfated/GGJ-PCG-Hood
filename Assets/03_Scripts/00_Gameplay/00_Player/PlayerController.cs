@@ -30,12 +30,13 @@ namespace Psalmhaven
         private Rigidbody rb;
         private Vector2 moveInput;
         private Animator _animator;
-        private bool isGrounded = true;
+        public bool isGrounded;
         private Vector3 groundNormal = Vector3.up;
 
-        void Awake()
+        void Start()
         {
             cameraTransform = Camera.main.transform;
+            camOffset = cameraTransform.position;
             _animator = GetComponent<Animator>();
             rb = GetComponent<Rigidbody>();
             rb.freezeRotation = true;
@@ -66,7 +67,7 @@ namespace Psalmhaven
 
         void FixedUpdate()
         {
-            //CheckGround();
+            CheckGround();
             MovePlayer();
         }
 
@@ -87,13 +88,9 @@ namespace Psalmhaven
 
         void MovePlayer()
         {
-            // Set animation bool
-            bool isRunning = moveInput.magnitude >= 0.1f;
-            _animator.SetBool("IsRunning", isRunning);
 
             // Normalize input to prevent diagonal speed boost
             Vector2 normalizedInput = Vector2.ClampMagnitude(moveInput, 1f);
-
 
             // Camera forward & right (flattened)
             Vector3 camForward = cameraTransform.forward;
@@ -110,31 +107,36 @@ namespace Psalmhaven
                 camForward * normalizedInput.y +
                 camRight * normalizedInput.x;
 
-            //Rotate character on move
-            if (desiredMove.sqrMagnitude > 0.001f)
-            {
-                Vector3 rotateMove = new Vector3(-desiredMove.z, desiredMove.y, desiredMove.x);
-                Quaternion targetRotation = Quaternion.LookRotation(rotateMove);
-                transform.rotation = Quaternion.Slerp(
-                    transform.rotation,
-                    targetRotation,
-                    rotationSpeed * Time.deltaTime
-                );
-            }
-
             if (isGrounded)
             {
+                // Set animation bool
+                bool isRunning = moveInput.magnitude >= 0.1f;
+                _animator.SetBool("IsRunning", isRunning);
+
+                //Rotate character on move
+                if (desiredMove.sqrMagnitude > 0.001f)
+                {
+                    Vector3 rotateMove = new Vector3(-desiredMove.z, desiredMove.y, desiredMove.x);
+                    Quaternion targetRotation = Quaternion.LookRotation(rotateMove);
+                    transform.rotation = Quaternion.Slerp(
+                        transform.rotation,
+                        targetRotation,
+                        rotationSpeed * Time.deltaTime
+                    );
+                }
+
                 Vector3 slopeMove = Vector3.ProjectOnPlane(desiredMove, groundNormal).normalized;
                 Vector3 targetVelocity = slopeMove * moveSpeed;
 
                 Vector3 velocityChange = targetVelocity - rb.linearVelocity;
-                velocityChange.y = 0f;
+                    velocityChange.y = 0f;
 
                 rb.AddForce(velocityChange, ForceMode.VelocityChange);
             }
             else
             {
                 rb.AddForce(desiredMove * moveSpeed * airControlMultiplier, ForceMode.Acceleration);
+                _animator.SetBool("IsRunning", false);
             }
         }
     }
