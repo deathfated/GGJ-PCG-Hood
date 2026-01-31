@@ -94,7 +94,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: ff22b8101f682724e83f1ccd2eee78b6, type: 2}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 2c33df2fb905610408cfe9fcfb8b4eec, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -8186,7 +8186,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 8fcc465bdf543e9449819b041bd3c357, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0bb0fb63be9919d44a1cd0073bc2fb06, type: 2}
+      objectReference: {fileID: 2100000, guid: 0d120addfe66e884aadade96b63a3f1a, type: 2}
     - target: {fileID: 919132149155446097, guid: 8fcc465bdf543e9449819b041bd3c357, type: 3}
       propertyPath: m_Name
       value: Mdl_RockyFloor (4)
@@ -10175,7 +10175,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 8fcc465bdf543e9449819b041bd3c357, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0bb0fb63be9919d44a1cd0073bc2fb06, type: 2}
+      objectReference: {fileID: 2100000, guid: 0d120addfe66e884aadade96b63a3f1a, type: 2}
     - target: {fileID: 919132149155446097, guid: 8fcc465bdf543e9449819b041bd3c357, type: 3}
       propertyPath: m_Name
       value: Mdl_RockyFloor (7)
@@ -12282,7 +12282,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 8fcc465bdf543e9449819b041bd3c357, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0bb0fb63be9919d44a1cd0073bc2fb06, type: 2}
+      objectReference: {fileID: 2100000, guid: 0d120addfe66e884aadade96b63a3f1a, type: 2}
     - target: {fileID: 919132149155446097, guid: 8fcc465bdf543e9449819b041bd3c357, type: 3}
       propertyPath: m_Name
       value: Mdl_RockyFloor (6)
@@ -15242,7 +15242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Script_FakeLight
   lightColor: {r: 0.4627451, g: 0.4609324, b: 0.32156864, a: 1}
-  intensity: 128
+  intensity: 256
   falloffExponent: 5
   lightSize: 32
   enableHalo: 0
@@ -15269,7 +15269,7 @@ Transform:
   m_GameObject: {fileID: 379516733}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.21, y: 3.8, z: 11.55}
+  m_LocalPosition: {x: -2.68, y: 3.61, z: 12.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21896,7 +21896,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 8fcc465bdf543e9449819b041bd3c357, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0bb0fb63be9919d44a1cd0073bc2fb06, type: 2}
+      objectReference: {fileID: 2100000, guid: 0d120addfe66e884aadade96b63a3f1a, type: 2}
     - target: {fileID: 919132149155446097, guid: 8fcc465bdf543e9449819b041bd3c357, type: 3}
       propertyPath: m_Name
       value: Mdl_RockyFloor (3)
@@ -31485,7 +31485,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 8fcc465bdf543e9449819b041bd3c357, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0bb0fb63be9919d44a1cd0073bc2fb06, type: 2}
+      objectReference: {fileID: 2100000, guid: 0d120addfe66e884aadade96b63a3f1a, type: 2}
     - target: {fileID: 919132149155446097, guid: 8fcc465bdf543e9449819b041bd3c357, type: 3}
       propertyPath: m_Name
       value: Mdl_RockyFloor (2)
@@ -48403,7 +48403,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4c43a255bf8852746ac1e36c53c8c3bd, type: 2}
+  - {fileID: 2100000, guid: 0d120addfe66e884aadade96b63a3f1a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75743,7 +75743,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 8fcc465bdf543e9449819b041bd3c357, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0bb0fb63be9919d44a1cd0073bc2fb06, type: 2}
+      objectReference: {fileID: 2100000, guid: 0d120addfe66e884aadade96b63a3f1a, type: 2}
     - target: {fileID: 919132149155446097, guid: 8fcc465bdf543e9449819b041bd3c357, type: 3}
       propertyPath: m_Name
       value: Mdl_RockyFloor (8)
@@ -76542,7 +76542,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 8fcc465bdf543e9449819b041bd3c357, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0bb0fb63be9919d44a1cd0073bc2fb06, type: 2}
+      objectReference: {fileID: 2100000, guid: 0d120addfe66e884aadade96b63a3f1a, type: 2}
     - target: {fileID: 919132149155446097, guid: 8fcc465bdf543e9449819b041bd3c357, type: 3}
       propertyPath: m_Name
       value: Mdl_RockyFloor (5)
@@ -83397,8 +83397,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a983353dfb7274c9939fde3bc028d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Script_FakeLight
-  lightColor: {r: 0.4641509, g: 0.36166495, b: 0.3214026, a: 1}
-  intensity: 64
+  lightColor: {r: 0.3962264, g: 0.22830781, b: 0.16372374, a: 1}
+  intensity: 128
   falloffExponent: 5
   lightSize: 32
   enableHalo: 0
