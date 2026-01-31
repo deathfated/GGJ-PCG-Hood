@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: DummyChoice
   m_EditorClassIdentifier: Assembly-CSharp::DummyChoiceSO
   choices:
-  - name: 1.Attack
-  - name: 2.Attack
-  - name: 3.Attack
-  - name: 4.Attack
-  - name: 5.Attack
-  - name: 6.Attack
+  - name: Attack
+  - name: Attack
+  - name: Attack
+  - name: Hide
+  - name: Hide
+  - name: Hide

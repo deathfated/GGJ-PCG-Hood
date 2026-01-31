@@ -9,7 +9,6 @@ namespace UI
     {
         [SerializeField] private float openPosY;
         [SerializeField] private Script_Dice dice;
-        [SerializeField] private List<ChoiceText> choices;
 
         private RectTransform rectTransform;
         private float closePosY;
@@ -29,7 +28,7 @@ namespace UI
         {
             if (dice.isRoll) return;
             dice.canRoll = false;
-            rectTransform.DOAnchorPosX(closePosY, openAnimateDuration);
+            rectTransform.DOAnchorPosY(closePosY, openAnimateDuration);
         }
         public void RollDice(Action OnStartRoll = null, Action<int> OnFinishedRoll = null)
         {
