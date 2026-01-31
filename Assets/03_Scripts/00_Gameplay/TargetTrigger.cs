@@ -16,6 +16,12 @@ public class TargetTrigger : MonoBehaviour
             IsComplete = true;
             Debug.Log("BOX SUDAH SAMPAI KE TARGET!");
             manager.CheckWinCondition();
+
+            if (SoundManager.Instance != null && SoundManager.Instance.CorrectClip != null)
+            {
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.CorrectClip);
+            }
+
         }
     }
 
