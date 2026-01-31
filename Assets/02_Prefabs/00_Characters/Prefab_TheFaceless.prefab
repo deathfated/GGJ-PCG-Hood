@@ -543,6 +543,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   maxSlopeAngle: 45
   camTarget: {fileID: 5920002315710832023}
+  isOnCamOffset: 1
   camOffset: {x: 27, y: 37, z: -27}
   camFollowSmoothTime: -0.05
   rotationXOffset: -10
@@ -586,8 +587,21 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   currentMask: 0
+  combatEffectData:
+  - Struggle
+  - Struggle
+  - Struggle
+  - Struggle
+  - Struggle
+  - Struggle
   combatActions: []
-  combatActions2: []
+  combatActions2:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   runActions: 
 --- !u!1 &2829341953584934873
 GameObject:

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Psalmhaven
@@ -12,11 +13,13 @@ namespace Psalmhaven
         public string MaskName => maskName;
         public string[] CombatActions => combatActions;
 
+        public static event Action OnEnemyDied;
 
 
         public override void Die()
         {
             Debug.Log("Enemy ded");
+            OnEnemyDied?.Invoke();
 
             Destroy(gameObject);
         }

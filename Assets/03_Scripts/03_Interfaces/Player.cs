@@ -6,6 +6,7 @@ namespace Psalmhaven
     public class Player : Character
     {
         public int currentMask;
+        public string[] combatEffectData;
         public string[] combatActions;
         public string[] combatActions2;
         public int[] runActions;
