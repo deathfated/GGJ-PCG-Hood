@@ -3,7 +3,7 @@ Shader "YmneShader/ShellTexturingGenerator"
     Properties
     {
         [Header(General Settings)]
-        [Enum(Dirt, 0, Sand, 1, Rock, 2)] _MaterialType ("Material Type", Int) = 1
+        [Enum(Dirt, 0, Sand, 1, Rock, 2, Brick, 3)] _MaterialType ("Material Type", Int) = 1
         
         [Header(Colors)]
         _BaseColor ("Base Color", Color) = (0.76, 0.65, 0.38, 1)
@@ -30,6 +30,7 @@ Shader "YmneShader/ShellTexturingGenerator"
         
         [Header(Stylization)]
         [IntRange] _PixelTextureResolution ("Pixel Texture Resolution", Range(32, 512)) = 128
+        _Dirtiness ("Dirtiness", Range(0, 1)) = 0.3
         
         [Header(Lighting)]
         _AmbientOcclusion ("Ambient Occlusion", Range(0, 1)) = 0.8
@@ -70,6 +71,7 @@ Shader "YmneShader/ShellTexturingGenerator"
         int _ParallaxRefinement;
         
         int _PixelTextureResolution;
+        float _Dirtiness;
         
         float _AmbientOcclusion;
         float _Brightness;
@@ -187,6 +189,77 @@ Shader "YmneShader/ShellTexturingGenerator"
                 float v = Voronoi(uv, 0.0, 4.0);
                 density = step(height, 1.0 - v); 
             }
+            else if (type == 3) // Brick
+            {
+                // Minecraft-style brick pattern with offset rows
+                float2 brickUV = uv * 4.0; // Scale for brick size
+                float2 brickSize = float2(2.0, 1.0); // Brick aspect ratio (wider than tall)
+                float mortarThickness = 0.08; // Mortar line thickness
+                
+                // Determine which row we're in (handle negative UVs)
+                float row = floor(brickUV.y / brickSize.y);
+                // Offset odd rows by half a brick width
+                float rowMod = fmod(row, 2.0);
+                rowMod = rowMod < 0 ? rowMod + 2.0 : rowMod; // Handle negative
+                float offset = rowMod * (brickSize.x * 0.5);
+                float2 brickCoord = float2(brickUV.x + offset, brickUV.y);
+                
+                // Get position within the brick cell (handle negative with frac-like behavior)
+                float2 cellMod = fmod(brickCoord, brickSize);
+                cellMod = cellMod < 0 ? cellMod + brickSize : cellMod; // Wrap negative to positive
+                float2 cellPos = cellMod / brickSize;
+                
+                // Mortar lines (horizontal and vertical)
+                float mortarH = step(cellPos.y, mortarThickness / brickSize.y) + step(1.0 - mortarThickness / brickSize.y, cellPos.y);
+                float mortarV = step(cellPos.x, mortarThickness / brickSize.x) + step(1.0 - mortarThickness / brickSize.x, cellPos.x);
+                float isMortar = saturate(mortarH + mortarV);
+                
+                // Brick ID for per-brick variation
+                float2 brickID = floor(brickCoord / brickSize);
+                
+                // === GRASS-STYLE DENSITY VARIATION ===
+                // Each brick has a random max height (like grass blades)
+                // Some bricks are tall (1.0), some thin (0.3), some missing (0.0)
+                float brickMaxHeight = Hash21(brickID * 1.234); // 0.0 - 1.0 random per brick
+                
+                // Apply density threshold - skip very low values (creates missing bricks)
+                float densityThreshold = 1.0 - _Density; // Use shader's density parameter
+                brickMaxHeight = brickMaxHeight > densityThreshold ? 
+                    (brickMaxHeight - densityThreshold) / (1.0 - densityThreshold) : 0.0;
+                
+                // Height mask - brick only exists up to its max height
+                float heightMask = step(height, brickMaxHeight);
+                
+                // Per-brick base variation for existing bricks
+                float brickBaseHeight = Hash21(brickID) * 0.3 + 0.7; // 0.7 - 1.0 for brick surface
+                
+                // Edge chipping - bricks worn at edges
+                float2 edgeDist = min(cellPos, 1.0 - cellPos);
+                float edgeFactor = smoothstep(0.0, 0.15, min(edgeDist.x, edgeDist.y));
+                float chipNoise = Hash21(brickID * 7.31) * 0.25;
+                float edgeWear = lerp(chipNoise, 0.0, edgeFactor);
+                
+                // Surface roughness
+                float surfaceNoise = FBM(uv * 16.0, 2) * 0.06;
+                
+                // Brick surface height
+                float brickSurface = brickBaseHeight - edgeWear - surfaceNoise;
+                
+                // Mortar is always recessed
+                float mortarDepth = 0.25;
+                
+                // Combine: brick surface where brick exists, mortar in gaps
+                float surfaceHeight = lerp(brickSurface, mortarDepth, isMortar);
+                
+                // Apply both height mask (brick exists at this height) and surface height
+                density = step(height, surfaceHeight) * heightMask;
+                
+                // Also show mortar in missing brick areas (deeper mortar)
+                if (heightMask < 0.5 && height < 0.2)
+                {
+                    density = 1.0; // Show deep mortar/hole bottom
+                }
+            }
             
             return density;
         }
@@ -195,13 +268,42 @@ Shader "YmneShader/ShellTexturingGenerator"
         {
             // Random variation based on position
             float3 noisePos = worldPos * _ColorVariationScale;
-            float variation = Noise2D(noisePos.xz + noisePos.y); // FBM(noisePos.xz, 2);
+            float variation = Noise2D(noisePos.xz + noisePos.y);
             
             float3 col = lerp(_BaseColor.rgb, _VariationColor.rgb, variation);
             
             // Add some per-pixel noise for texture
             float grain = Hash21(uv * 100.0);
             col += (grain - 0.5) * 0.05;
+            
+            // === DIRT/GRIME STAINS ===
+            if (_Dirtiness > 0.01)
+            {
+                // Multi-layered dirt noise for realistic stains
+                float dirtNoise1 = FBM(uv * 3.0 + worldPos.xz * 0.1, 3); // Large splotches
+                float dirtNoise2 = FBM(uv * 8.0 + worldPos.y * 0.5, 2); // Medium streaks
+                float dirtNoise3 = Noise2D(uv * 20.0); // Fine grime
+                
+                // Combine dirt layers
+                float dirtPattern = dirtNoise1 * 0.5 + dirtNoise2 * 0.35 + dirtNoise3 * 0.15;
+                
+                // Dirt accumulates in crevices (lower heights) and on surfaces
+                float crustFactor = 1.0 - height; // More dirt in crevices
+                dirtPattern = dirtPattern * (0.7 + crustFactor * 0.3);
+                
+                // Apply threshold to create patchy dirt
+                float dirtMask = smoothstep(0.3, 0.7, dirtPattern);
+                
+                // Dirt color - desaturated dark brown/gray
+                float3 dirtColor = col * 0.4; // Darkened version of base
+                dirtColor = lerp(dirtColor, float3(0.15, 0.12, 0.1), 0.5); // Mix with dark grime
+                
+                // Apply dirt based on slider
+                col = lerp(col, dirtColor, dirtMask * _Dirtiness);
+                
+                // Additional subtle overall darkening with dirtiness
+                col *= lerp(1.0, 0.85, _Dirtiness * 0.5);
+            }
             
             // darken lower layers for pseudo-AO
             col *= lerp(0.5, 1.0, height);

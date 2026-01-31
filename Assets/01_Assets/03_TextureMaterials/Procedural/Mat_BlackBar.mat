@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mat_Bush_1 1
-  m_Shader: {fileID: 4800000, guid: f2266721b7ff9dc4b9a8e13896ceebc0, type: 3}
+  m_Name: Mat_BlackBar
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -72,23 +72,13 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _SSSDistortion: 0.5
-    - _SSSPower: 3
-    - _SSSStrength: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _VoxelSize: 10
-    - _WindDetailStrength: 0.05
-    - _WindFrequency: 1
-    - _WindScale: 0.5
-    - _WindSpeed: 1
-    - _WindStrength: 0.18
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.381132, g: 0.3250865, b: 0.02804552, a: 1}
+    - _Color: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SSSColor: {r: 0.5, g: 0.8, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

@@ -23,9 +23,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mat_ShellTexturingGenerator
+  m_Name: Mat_Brick_1
   m_Shader: {fileID: 4800000, guid: 9286f6b706e20f94d9e9f31e612a2749, type: 3}
-  m_Parent: {fileID: 2100000, guid: 163d1b48e5ac16544806cf696d46d11c, type: 2}
+  m_Parent: {fileID: 2100000, guid: cf8b3dd892e3b9945aed537bf6063c72, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:
@@ -51,13 +51,22 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _AmbientOcclusion: 0.827
-    - _MaterialType: 1
-    - _ParallaxStrength: 0.5
-    - _Smoothness: 0.266
-    - _TriplanarScale: 0.4
+    - _AmbientOcclusion: 0
+    - _Brightness: 1
+    - _ColorVariationScale: 3
+    - _Density: 0.75
+    - _Dirtiness: 1
+    - _MaterialType: 3
+    - _ParallaxSteps: 39
+    - _ParallaxStrength: 0.1
+    - _PixelTextureResolution: 32
+    - _ShellThickness: 1
+    - _Smoothness: 0
+    - _SmoothnessVariation: 0
+    - _TriplanarBlendSharpness: 1
+    - _TriplanarScale: 1.25
     m_Colors:
-    - _BaseColor: {r: 1, g: 0.8640608, b: 0.2783019, a: 1}
-    - _VariationColor: {r: 1, g: 0.8641787, b: 0.5801887, a: 1}
+    - _BaseColor: {r: 0.5924529, g: 0.5924529, b: 0.5924529, a: 1}
+    - _VariationColor: {r: 0.554717, g: 0.554717, b: 0.554717, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
