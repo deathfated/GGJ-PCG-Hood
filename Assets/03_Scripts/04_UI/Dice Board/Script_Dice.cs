@@ -1,10 +1,9 @@
-using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using static UnityEngine.InputSystem.InputAction;
 
 namespace UI
 {
@@ -14,28 +13,22 @@ namespace UI
         [SerializeField] private List<Sprite> diceHeads;
         private readonly int repeatAmount = 1;
         private readonly float time= 0.2f;
-        private bool canRoll = true;
-        private void Update()
-        {
-            if(Input.GetKeyDown(KeyCode.E))
-            {
-                RollDice();
-            }
-        }
-
-        public void RollDice()
+        public bool canRoll = false;
+        public bool isRoll = false;
+        public void RollDice(Action OnStartRoll = null, Action<int> OnFinishedRoll = null)
         {
             if (canRoll)
             {
-                int number = Random.Range(0, 5);
-                StartCoroutine(Randomize(number));
+                int number = UnityEngine.Random.Range(0, 5);
+                StartCoroutine(Randomize(number, OnStartRoll, OnFinishedRoll));
             }
         }
-
-        private IEnumerator Randomize(int number)
+        private IEnumerator Randomize(int number, Action OnStartRoll = null, Action<int> OnFinishedRoll = null)
         {
             int currentRepeat = 0;
             canRoll = false;
+            isRoll = true;
+            OnStartRoll?.Invoke();
 
             while (currentRepeat < repeatAmount)
             {
@@ -49,6 +42,8 @@ namespace UI
 
             diceImage.sprite = diceHeads[number];
             canRoll = true;
+            isRoll = false;
+            OnFinishedRoll?.Invoke(number);
         }
     }
 }
