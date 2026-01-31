@@ -1,6 +1,6 @@
 
 using System.Collections.Generic;
-using System.Linq;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -25,7 +25,7 @@ namespace UI
         // for debugging purposes
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            /*if (Input.GetKeyDown(KeyCode.R))
             {
                 isBoardOpened = !isBoardOpened;
                 OpenBoard(isBoardOpened);
@@ -33,7 +33,7 @@ namespace UI
             if (Input.GetKeyDown(KeyCode.E))
             {
                 RollDice();
-            }
+            }*/
         }
 
         public void OpenBoard(bool status) 
@@ -71,9 +71,11 @@ namespace UI
             }
         }
 
-        public void RollDice()
+        public void RollDice(Action<int> OnDiceRolled)
         {
             board.RollDice(OnFinishedRoll: (number) => {
+                OnDiceRolled(number);
+
                 choiceTextList[number].RevealChoice(activeChoices[number].choiceValue);
                 OnRollDiceAction?.Invoke(number);
             });
