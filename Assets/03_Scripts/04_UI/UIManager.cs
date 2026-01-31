@@ -2,6 +2,7 @@
 using Psalmhaven;
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -19,12 +20,17 @@ namespace UI
         [SerializeField] private PauseWindow pauseWindow;
         [HideInInspector] public static UIManager instance;
 
+        [Header("Game Currency")]
+        [SerializeField] private TextMeshProUGUI goldCurrency;
+
         private List<ChoiceData> activeChoices = new();
         private UnityAction<int> OnRollDiceAction;
         private void Awake()
         {
             if (instance == null) instance = this;
             else Destroy(gameObject);
+
+            DontDestroyOnLoad(gameObject);
         }
 
         public void OpenBoard(bool status) 
@@ -103,6 +109,11 @@ namespace UI
         {
             if (pauseWindow.isPaused) pauseWindow.CloseWindow();
             else pauseWindow.OpenWindow();
+        }
+
+        public void UpdateCurrency(string currency)
+        {
+            goldCurrency.text = currency;
         }
     }
 }

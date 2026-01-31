@@ -68,11 +68,13 @@ public class ActionItemInteraction : BaseInteraction
         ClearCoroutine();
         if (isShow)
         {
-            activeCoroutine = StartCoroutine(Fade(uiPanel, 0, 1, onComplete : ShowRollDice));
+            ShowRollDice();
+            activeCoroutine = StartCoroutine(Fade(uiPanel, 0, 1));
         }
         else
         {
-            activeCoroutine = StartCoroutine(Fade(uiPanel, 1, 0, onComplete: HideRollDice));
+            HideRollDice();
+            activeCoroutine = StartCoroutine(Fade(uiPanel, 1, 0));
         }
     }
 
