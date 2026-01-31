@@ -3,6 +3,7 @@ using UnityEngine;
 public class SokobanManager : MonoBehaviour
 {
     public TargetTrigger[] allTargets;
+    
     public void Start ()
     {
         foreach(TargetTrigger trigger in allTargets)
@@ -26,6 +27,10 @@ public class SokobanManager : MonoBehaviour
 
     private void WinGame()
     {
+        
         Debug.Log("SEMUA BOX SUDAH MASUK!");
     }
+
+
+
 }
