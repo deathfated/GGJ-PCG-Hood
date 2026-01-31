@@ -10,8 +10,7 @@ namespace UI
         [SerializeField] private Button restartButton;
         [SerializeField] private Button toHomeButton;
         [SerializeField] private Button exitButton;
-
-        public bool isPaused = false;  
+        public bool isPaused = false;
         private void Start()
         {
             continueButton.onClick.AddListener(() => CloseWindow());

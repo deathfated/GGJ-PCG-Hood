@@ -1,6 +1,7 @@
 
-using System.Collections.Generic;
+using Psalmhaven;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -9,13 +10,13 @@ namespace UI
 { 
     public class UIManager : MonoBehaviour
     {
-        //[SerializeField] private InputAction playerInput;
+        [Header("Game HUD")]
         [SerializeField] private DiceBoard board;
         [SerializeField] private List<ChoiceText> choiceTextList;
         [SerializeField] private Inventory inventory;
+        [Header("Game Menus")]
+        [SerializeField] private MainMenu mainMenu;
         [SerializeField] private PauseWindow pauseWindow;
-        private bool isBoardOpened = false;
-        private bool isPaused = false;
         [HideInInspector] public static UIManager instance;
 
         private List<ChoiceData> activeChoices = new();
@@ -83,6 +84,19 @@ namespace UI
         public void SetGold(float amount)
         {
             inventory.SetGold(amount);
+        }
+
+        public void StartMainMenu(UnityAction<int> RollDiceAction)
+        {
+            mainMenu.OpenWindow();
+            board.OpenWindow();
+            OnRollDiceAction += RollDiceAction;
+        }
+
+        public void CloseMainMenu()
+        {
+            mainMenu.CloseWindow();
+            board.CloseWindow();
         }
 
         public void Pause(InputAction.CallbackContext context)
