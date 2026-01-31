@@ -44,18 +44,10 @@ namespace Psalmhaven
 
         #region CameraLogic
 
-        void LateUpdate()
-        {
-            if (!camTarget) return;
+        //void LateUpdate()
+        //{
 
-            Vector3 desiredPosition = camTarget.position + camOffset;
-            cameraTransform.transform.position = Vector3.SmoothDamp(
-                transform.position,
-                desiredPosition,
-                ref velocity,
-                camFollowSmoothTime
-            );
-        }
+        //}
 
 
         #endregion
@@ -69,6 +61,16 @@ namespace Psalmhaven
         {
             CheckGround();
             MovePlayer();
+
+            if (!camTarget) return;
+
+            Vector3 desiredPosition = camTarget.position + camOffset;
+            cameraTransform.transform.position = Vector3.SmoothDamp(
+                transform.position,
+                desiredPosition,
+                ref velocity,
+                camFollowSmoothTime
+            );
         }
 
         void CheckGround()

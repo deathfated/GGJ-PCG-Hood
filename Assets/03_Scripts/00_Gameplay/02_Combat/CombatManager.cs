@@ -25,20 +25,20 @@ namespace Psalmhaven
 
             //check if its string or int
             int playerDmg;
-            if (int.TryParse(player.combatActions[resultRoll], out playerDmg)) { }
+            if (player.currentMask == 1) //switch actions based on mask (stupid method)
+            {
+                if (int.TryParse(player.combatActions[resultRoll], out playerDmg)) { }
+                else return;
+            }
             else
             {
-                Debug.Log("POPO " + player.combatActions[resultRoll]);
-                return;
+                if (int.TryParse(player.combatActions2[resultRoll], out playerDmg)) { }
+                else return;
             }
 
             int enemyDmg;
             if (int.TryParse(enemy.CombatActions[resultRoll], out enemyDmg)) { }
-            else
-            {
-                Debug.Log("POPO " + enemy.CombatActions[resultRoll]);
-                return;
-            }
+            else return;
 
             int resultDamage = playerDmg + enemyDmg;
             Debug.Log($"{playerDmg} + {enemyDmg} = {resultDamage}");
