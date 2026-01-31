@@ -8,6 +8,8 @@ namespace Psalmhaven
         public int currentMask;
         public string[] combatActions;
         public string[] combatActions2;
+        public int[] runActions;
+
         public static event Action OnPlayerDied;
 
         public override void Die()

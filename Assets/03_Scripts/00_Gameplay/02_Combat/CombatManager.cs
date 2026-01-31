@@ -1,3 +1,5 @@
+using System;
+using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,17 +13,59 @@ namespace Psalmhaven
 
         [SerializeField] GameObject optionsPanel;
         [SerializeField] GameObject gameoverPanel;
+        //private DiceRoller diceRoller;
+        [SerializeField] GameObject hUD;
+        private int resultRoll = 1;
+
+        [SerializeField] float delayRoll;
         private Button[] buttons;
+
+        [HideInInspector] public static CombatManager Instance;
+
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                // If an instance already exists and it's not this one, destroy this new object
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                // Otherwise, set this as the only instance
+                Instance = this;
+                // Optional: keep the object alive across scene loads
+                DontDestroyOnLoad(this.gameObject);
+            }
+        }
 
         private void Start()
         {
             buttons = optionsPanel.GetComponentsInChildren<Button>();
+            //diceRoller = UIManager.Instance.GetComponentInChildren<DiceRoller>();
+        }
+
+        public void StartCombat()
+        {
+
         }
 
         public void StartActionAttack()
         {
-            int resultRoll = TestRoll();
-            Debug.Log("rando " + resultRoll);
+            //int resultRoll = diceRoller.RollDice();
+            //delayRoll = diceRoller.DiceAnimDelay;
+            //diceRoller.AnimateRollDice(resultRoll);
+            UIManager.instance.RollDice(number =>
+            {
+                resultRoll = number;
+                ActionAttack(resultRoll);
+            });
+            //StartCoroutine("ActionAttack", resultRoll);
+            //Debug.Log("rando " + resultRoll);
+        }
+
+        private void ActionAttack(int resultRoll)
+        {
+            //yield return new WaitForSeconds(resultRoll);
 
             //check if its string or int
             int playerDmg;
@@ -33,12 +77,12 @@ namespace Psalmhaven
             else
             {
                 if (int.TryParse(player.combatActions2[resultRoll], out playerDmg)) { }
-                else return;
+                else return ;
             }
 
             int enemyDmg;
             if (int.TryParse(enemy.CombatActions[resultRoll], out enemyDmg)) { }
-            else return;
+            else return ;
 
             int resultDamage = playerDmg + enemyDmg;
             Debug.Log($"{playerDmg} + {enemyDmg} = {resultDamage}");
@@ -60,25 +104,27 @@ namespace Psalmhaven
             Debug.Log("end = " + dmg);
         }
 
-        public int TestRoll()
-        {
-            return Random.Range(0, 5);
-        }
-
         private void OnEnable()
         {
             Player.OnPlayerDied += ShowGameOver;
+
+            //UIManager.instance.OnDiceRolled += ActionAttack;
+
         }
 
         private void OnDisable()
         {
             Player.OnPlayerDied -= ShowGameOver;
+
+            //UIManager.instance.OnDiceRolled -= ActionAttack;
+
         }
 
         private void ShowGameOver()
         {
             gameoverPanel.SetActive(true);
             optionsPanel.SetActive(false);
+            hUD.SetActive(false);
             Time.timeScale = 0f; // optional pause
         }
 
@@ -92,6 +138,7 @@ namespace Psalmhaven
             //}
 
             //reload scene
+            Time.timeScale = 1;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
