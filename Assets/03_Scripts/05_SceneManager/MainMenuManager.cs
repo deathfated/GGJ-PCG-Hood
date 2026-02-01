@@ -15,7 +15,12 @@ namespace Psalmhaven
             player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
             EnableInput(false);
 
-            UIManager.instance.StartMainMenu(null, CloseMainMenu);
+            UIManager.instance.OpenDisclaimer(true, () => {
+                UIManager.instance.OpenDisclaimer(false, () =>
+                {
+                    UIManager.instance.StartMainMenu(null, CloseMainMenu);
+                });
+             });
         }
 
         private void EnableInput(bool status)

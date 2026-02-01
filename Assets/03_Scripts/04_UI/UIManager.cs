@@ -18,6 +18,7 @@ namespace UI
         [SerializeField] private List<ChoiceText> choiceTextList;
         [SerializeField] private Inventory inventory;
         [Header("Game Menus")]
+        [SerializeField] private Disclaimer disclaimer;
         [SerializeField] private MainMenu mainMenu;
         [SerializeField] private PauseWindow pauseWindow;
         [HideInInspector] public static UIManager instance;
@@ -121,6 +122,20 @@ namespace UI
         public void SetGold(float amount)
         {
             inventory.SetGold(amount);
+        }
+
+        public void OpenDisclaimer(bool status, Action callback)
+        {
+            if (status)
+            {
+                disclaimer.OnOpenDisclaimer = callback;
+                disclaimer.OpenWindow();
+            }
+            else 
+            { 
+                disclaimer.OnCloseDisclaimer = callback;
+                disclaimer.CloseWindow(); 
+            }
         }
 
         public void StartMainMenu(Action OnMenuOpened, UnityAction<int> RollDiceAction)
