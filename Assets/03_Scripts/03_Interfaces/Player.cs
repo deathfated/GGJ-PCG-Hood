@@ -27,5 +27,11 @@ namespace Psalmhaven
             UIManager.instance.SetHealth(currentHealth);
 
         }
+
+        public override void Heal(float amount)
+        {
+            base.Heal(amount);
+            UIManager.instance.SetHealth(currentHealth);
+        }
     }
 }

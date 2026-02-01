@@ -57,7 +57,7 @@ public class Script_FakeLight : MonoBehaviour
         // Generate mesh if needed
         if (sphereMesh == null)
         {
-            sphereMesh = GenerateLowPolySphere(1, 0.5f);
+            //sphereMesh = GenerateLowPolySphere(1, 0.5f);
         }
         
         // Migration/Initialization logic
