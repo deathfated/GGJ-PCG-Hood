@@ -46,6 +46,8 @@ namespace Psalmhaven
             }
 
             Transform player = GameObject.FindWithTag("Player").transform;
+            Player playerStats = player.GetComponent<Player>();
+            playerStats.TakeDamage(0);
             if (player != null)
             {
                 Transform spawnPosition = LevelManager.Instance.GetSpawnPosition(spawnPointPosition);

@@ -42,6 +42,7 @@ namespace UI
 
         public void OpenBoard(bool status) 
         {
+            Debug.Log("Open Board : " + status);
             if (status)
             {
                 board.OpenWindow();

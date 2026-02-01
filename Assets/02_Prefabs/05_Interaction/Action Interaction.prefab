@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8403797430686335430}
   - component: {fileID: 4567564250211629668}
   - component: {fileID: 4088269166208515461}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 6962018438900640481}
   - component: {fileID: 833720987348267151}
   - component: {fileID: 925354375810237695}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 5543130711747105358}
   - component: {fileID: 1791465631575873592}
   - component: {fileID: 3525763975303089942}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,7 +341,7 @@ GameObject:
   - component: {fileID: 1370497559796188349}
   - component: {fileID: 5887187561217524096}
   - component: {fileID: 336148293162616275}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Action Interaction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -454,6 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a41c8229d112d44b679fcc6c9a32be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActionItemInteraction
+  itemId: 
   uiPanel: {fileID: 4237735430488335439}
   interactEffectData:
   - interactEffect: {fileID: 11400000, guid: 12f1f6b8b787e164499dc38d410ab3e0, type: 2}
@@ -468,6 +469,10 @@ MonoBehaviour:
     hasInteract: 0
   - interactEffect: {fileID: 11400000, guid: 2a421fc94849cb14e8cdd060a6d31163, type: 2}
     hasInteract: 0
+  UnityEventOnPoint:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointEvent: 
 --- !u!1 &7626536961197726024
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +485,7 @@ GameObject:
   - component: {fileID: 3138345781015896444}
   - component: {fileID: 1863248901333747191}
   - component: {fileID: 4237735430488335439}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}

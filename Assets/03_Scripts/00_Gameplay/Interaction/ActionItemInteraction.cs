@@ -102,7 +102,10 @@ public class ActionItemInteraction : BaseInteraction
             int check = OnPointEvent[i];
             if(dice == check)
             {
+                UnityEventOnPoint?.Invoke();
                 StartCoroutine(DelayEventOnPoint());
+
+                UIManager.instance.OpenBoard(false);
             }
         }
     }

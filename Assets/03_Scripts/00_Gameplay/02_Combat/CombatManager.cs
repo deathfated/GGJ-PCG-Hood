@@ -86,11 +86,12 @@ namespace Psalmhaven
 
         public void EndCombat()
         {
-            hUD.gameObject.SetActive(false);
+            Debug.Log("End Combat");
+            ShowPanel(false);
+            //hUD.gameObject.SetActive(false);
             if (player == null) ReAssignPlayer();
             player.GetComponent<PlayerController>().canMove = true;
             canvas.gameObject.SetActive(false);
-            ShowPanel(false);
         }
 
         public void ShowPanel(bool isShow)
@@ -222,6 +223,7 @@ namespace Psalmhaven
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);*/
 
             gameoverPanel.SetActive(false);
+            hUD.SetActive(true);
             Time.timeScale = 1f;
             //SceneManager.
             if (isFirstFight)
