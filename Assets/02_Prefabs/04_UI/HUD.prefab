@@ -691,7 +691,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b96a6c7ec47682248b06fc7569eca4a8, type: 2}
   m_sharedMaterial: {fileID: -5544071883942190516, guid: b96a6c7ec47682248b06fc7569eca4a8, type: 2}
@@ -1098,7 +1098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a3ddd8d2710dd408a1247ee64fd981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.HealthIcon
-  initialAmount: 100
+  initialAmount: 10
   amountIcon: {fileID: 8511649271500678371}
   amountText: {fileID: 6748458495207247256}
   shakeDuration: 0.2

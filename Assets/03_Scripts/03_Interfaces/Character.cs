@@ -25,14 +25,13 @@ public abstract class Character : MonoBehaviour, ICharacter
     protected virtual void Awake()
     {
         currentHealth = maxHealth;
-        manager = UIManager.instance;
+        //manager = UIManager.instance;
     }
 
     public virtual void TakeDamage(float damage)
     {
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        manager.SetHealth(currentHealth);
 
         if (currentHealth <= 0)
             Die();
