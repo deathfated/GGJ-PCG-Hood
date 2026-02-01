@@ -16,6 +16,8 @@ public class StaticNonInteraction : BaseInteraction
     private DialogData _currentDialog;
     private bool _hasInteract;
 
+    public bool _oneTimeInteract;
+
     private Coroutine activeCoroutine;
 
     public UnityEvent OnEnterDialog;
@@ -41,6 +43,9 @@ public class StaticNonInteraction : BaseInteraction
 
     public override void TriggerExit(Collider other)
     {
+        if (_oneTimeInteract) 
+            return;
+
         if (!_hasInteract)
             return;
 

@@ -49,24 +49,30 @@ namespace Psalmhaven
         {
             buttons = optionsPanel.GetComponentsInChildren<UnityEngine.UI.Button>();
             //diceRoller = UIManager.Instance.GetComponentInChildren<DiceRoller>();
-            playerController = player.GetComponent<PlayerController>();
+            //playerController = player.GetComponent<PlayerController>();
+            ReAssignPlayer();
+            hUD = UIManager.instance.gameObject;
         }
 
         public void StartCombat()
         {
             hUD.gameObject.SetActive(true);
+            
+            if (player == null) ReAssignPlayer();
             player.GetComponent<PlayerController>().canMove = false;
+            
             canvas.gameObject.SetActive(true);
             ShowPanel(true);
 
             //player face enemy, TODO: enemy too?
-            player.GetComponent<PlayerController>().FaceObject(enemy.transform);
+            //player.GetComponent<PlayerController>().FaceObject(enemy.transform);
             enemy.IsInCombat = true;
         }
 
         public void EndCombat()
         {
             hUD.gameObject.SetActive(false);
+            if (player == null) ReAssignPlayer();
             player.GetComponent<PlayerController>().canMove = true;
             canvas.gameObject.SetActive(false);
             ShowPanel(false);
@@ -187,10 +193,10 @@ namespace Psalmhaven
             Time.timeScale = 0f; // optional pause
         }
 
-        public void RestartGame()
+        public void RestartGame() //repurposed for first boss "death"
         {
 
-            //destroy dontdestroyonload objects
+            /*destroy dontdestroyonload objects
             //foreach (var obj in GameObject.FindGameObjectsWithTag("Persistent"))
             //{
             //    Destroy(obj);
@@ -199,9 +205,17 @@ namespace Psalmhaven
             //reload scene
             gameoverPanel.SetActive(false);
             Time.timeScale = 1;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);*/
+
+            gameoverPanel.SetActive(false);
+            Time.timeScale = 1f;
+            //SceneManager.
         }
 
+        private void ReAssignPlayer()
+        {
+            player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        }
 
     }
 }

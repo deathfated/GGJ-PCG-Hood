@@ -4,10 +4,13 @@ using UnityEngine;
 public class TransitionBoss : MonoBehaviour
 {
     public Animator animator;
-    PlayerController playerController;
+    public PlayerController playerController;
+    public Transform enemyTransform;
 
     public void TriggerCutsceneBossFirst()
     {
+        playerController.transform.localPosition = Vector3.zero;
+        enemyTransform.localPosition = Vector3.zero;
         playerController.enabled = false;
         animator.SetBool("FirstBoss", true);
     }
