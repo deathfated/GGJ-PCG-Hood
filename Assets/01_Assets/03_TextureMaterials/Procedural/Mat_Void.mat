@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Mat_Void
-  m_Shader: {fileID: 4800000, guid: 9286f6b706e20f94d9e9f31e612a2749, type: 3}
-  m_Parent: {fileID: 2100000, guid: bb43fe324b9cc4d4b937bfea4ca00dc5, type: 2}
+  m_Shader: {fileID: 211, guid: 0000000000000000f000000000000000, type: 0}
+  m_Parent: {fileID: 2100000, guid: 08042e455f079c442aa30d5738623ac2, type: 2}
   m_ModifiedSerializedProperties: 6
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -42,6 +42,7 @@ Material:
     - _TriplanarScale: 0.5
     m_Colors:
     - _BaseColor: {r: 0.76, g: 0.65, b: 0.37999994, a: 1}
+    - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
