@@ -588,20 +588,20 @@ MonoBehaviour:
   currentHealth: 0
   currentMask: 0
   combatEffectData:
-  - Struggle
-  - Struggle
-  - Struggle
-  - Struggle
-  - Struggle
-  - Struggle
+  - Miss
+  - Miss
+  - Miss
+  - Fight
+  - Fight
+  - Fight
   combatActions: []
   combatActions2:
   - 0
   - 0
   - 0
-  - 0
-  - 0
-  - 0
+  - 3
+  - 4
+  - 5
   runActions: 
 --- !u!1 &2829341953584934873
 GameObject:
