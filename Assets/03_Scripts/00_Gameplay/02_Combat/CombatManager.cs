@@ -25,6 +25,8 @@ namespace Psalmhaven
 
         [HideInInspector] public static CombatManager Instance;
 
+        public VibrationManager vibrationManager;
+
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -39,10 +41,12 @@ namespace Psalmhaven
                 // Optional: keep the object alive across scene loads
                 DontDestroyOnLoad(this.gameObject);
             }
+            
         }
 
         private void Start()
         {
+            vibrationManager.VibrateController(0.5f, 0.5f, 0.5f);
             buttons = optionsPanel.GetComponentsInChildren<Button>();
             //diceRoller = UIManager.Instance.GetComponentInChildren<DiceRoller>();
             playerController = player.GetComponent<PlayerController>();
