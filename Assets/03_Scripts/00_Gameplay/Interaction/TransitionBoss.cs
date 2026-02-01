@@ -16,6 +16,7 @@ public class TransitionBoss : MonoBehaviour
     public void TriggerCutsceneBossFirst()
     {
         playerController.transform.localPosition = Vector3.zero;
+        playerController.FaceObject(enemyTransform, 1000);
         enemyTransform.localPosition = Vector3.zero;
         playerController.enabled = false;
         animator.SetBool("FirstBoss", true);

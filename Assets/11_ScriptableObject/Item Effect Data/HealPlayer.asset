@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac947d1286777cd4bafee7ea96c668cb, type: 3}
   m_Name: HealPlayer
   m_EditorClassIdentifier: Assembly-CSharp::HealPlayer
-  effectName: Heal 10 Point
-  healValue: 0
+  effectName: Heal 5 Point
+  healValue: 5

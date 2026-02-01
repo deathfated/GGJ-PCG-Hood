@@ -58,9 +58,6 @@ public class ActionItemInteraction : BaseInteraction
 
     public override void TriggerEnter(Collider other)
     {
-        if (hasInteract)
-            return;
-
         ClearCoroutine();
         ShowPanel(true);
     }
@@ -118,9 +115,6 @@ public class ActionItemInteraction : BaseInteraction
 
     public override void TriggerExit(Collider other)
     {
-        if (hasInteract)
-            return;
-
         base.TriggerExit(other);
         ShowPanel(false);
     }

@@ -26,6 +26,8 @@ namespace Psalmhaven
         private UnityEngine.UI.Button[] buttons;
         private Coroutine activeCoroutine;
 
+        private bool isFirstFight = true;
+
 
         [HideInInspector] public static CombatManager Instance;
 
@@ -51,7 +53,7 @@ namespace Psalmhaven
             //diceRoller = UIManager.Instance.GetComponentInChildren<DiceRoller>();
             //playerController = player.GetComponent<PlayerController>();
             ReAssignPlayer();
-            hUD = UIManager.instance.gameObject;
+            //hUD = UIManager.instance.gameObject;
 
 
         }
@@ -74,9 +76,12 @@ namespace Psalmhaven
             enemy.IsInCombat = true;
 
             //temporary place
-            TransitionBoss TB = GameObject.FindWithTag("Entity").GetComponent<TransitionBoss>();
-            Debug.Log("POPO " + TB);
-            gameoverPanel.GetComponentInChildren<UnityEngine.UI.Button>().onClick.AddListener(TB.TriggerCutsceneBossFirst);
+            if (isFirstFight)
+            {
+                TransitionBoss TB = GameObject.FindWithTag("Entity").GetComponent<TransitionBoss>();
+                Debug.Log("POPO " + TB);
+                gameoverPanel.GetComponentInChildren<UnityEngine.UI.Button>().onClick.AddListener(TB.TriggerCutsceneBossFirst);
+            }
         }
 
         public void EndCombat()
@@ -205,7 +210,6 @@ namespace Psalmhaven
 
         public void RestartGame() //repurposed for first boss "death"
         {
-
             /*destroy dontdestroyonload objects
             //foreach (var obj in GameObject.FindGameObjectsWithTag("Persistent"))
             //{
@@ -220,7 +224,17 @@ namespace Psalmhaven
             gameoverPanel.SetActive(false);
             Time.timeScale = 1f;
             //SceneManager.
+            if (isFirstFight)
+            {
+                isFirstFight = false;
+            }
+            else
+            {
+                SceneTransitionManager.instance.Restart();
+            }
         }
+
+
 
         private void ReAssignPlayer()
         {
