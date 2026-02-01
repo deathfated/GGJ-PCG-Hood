@@ -26440,6 +26440,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prefab_HumanKeeper
       objectReference: {fileID: 0}
+    - target: {fileID: 1502295092758754992, guid: 806699600e2d5794e83a4bbe335785bd, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 3617853046404316620, guid: 806699600e2d5794e83a4bbe335785bd, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
@@ -78027,6 +78031,10 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1597220955}
+    - target: {fileID: 7319942269668083558, guid: d060ffe2ca8d54d46896cd947b3fb753, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 9018720926654849035, guid: d060ffe2ca8d54d46896cd947b3fb753, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.438

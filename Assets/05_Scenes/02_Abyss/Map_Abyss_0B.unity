@@ -782,6 +782,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Boney_patrol
       objectReference: {fileID: 0}
+    - target: {fileID: 6044498512565352125, guid: 6c104eeed1fbada44af3bd45db18f62a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 7774334338263109126, guid: 6c104eeed1fbada44af3bd45db18f62a, type: 3}
       propertyPath: _idleTime
       value: 4
@@ -816,12 +820,23 @@ PrefabInstance:
       objectReference: {fileID: 401698483}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1723737615421456167, guid: 6c104eeed1fbada44af3bd45db18f62a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1515901323}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6044498512565352125, guid: 6c104eeed1fbada44af3bd45db18f62a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 167699941}
+    - targetCorrespondingSourceObject: {fileID: 6044498512565352125, guid: 6c104eeed1fbada44af3bd45db18f62a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 167699942}
   m_SourcePrefab: {fileID: 100100000, guid: 6c104eeed1fbada44af3bd45db18f62a, type: 3}
+--- !u!4 &20024565 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1723737615421456167, guid: 6c104eeed1fbada44af3bd45db18f62a, type: 3}
+  m_PrefabInstance: {fileID: 20024564}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &35224397
 GameObject:
   m_ObjectHideFlags: 0
@@ -5690,6 +5705,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &167699942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167699940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa5e4d5f9c4452429ddb55a2d9cd107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Psalmhaven.Enemy
+  maxHealth: 10
+  currentHealth: 0
+  maskName: 
+  combatActions:
+  - 4
+  - 4
+  - 4
+  - 0
+  - 0
+  - 0
+  trigger: {fileID: 0}
+  IsInCombat: 0
 --- !u!43 &168432147
 Mesh:
   m_ObjectHideFlags: 0
@@ -46581,6 +46620,88 @@ MonoBehaviour:
     - EdgeIndices: 07000000060000000500000004000000
       TexGenIndex: 5
     Generation: 64
+--- !u!1001 &1515901322
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 20024565}
+    m_Modifications:
+    - target: {fileID: 2622357466175027473, guid: e54ae63a853a4c44ba98157581582085, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 5211239438163999791, guid: e54ae63a853a4c44ba98157581582085, type: 3}
+      propertyPath: m_Name
+      value: CombatTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213232129735536765, guid: e54ae63a853a4c44ba98157581582085, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213232129735536765, guid: e54ae63a853a4c44ba98157581582085, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213232129735536765, guid: e54ae63a853a4c44ba98157581582085, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213232129735536765, guid: e54ae63a853a4c44ba98157581582085, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213232129735536765, guid: e54ae63a853a4c44ba98157581582085, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213232129735536765, guid: e54ae63a853a4c44ba98157581582085, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.115
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213232129735536765, guid: e54ae63a853a4c44ba98157581582085, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213232129735536765, guid: e54ae63a853a4c44ba98157581582085, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213232129735536765, guid: e54ae63a853a4c44ba98157581582085, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213232129735536765, guid: e54ae63a853a4c44ba98157581582085, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213232129735536765, guid: e54ae63a853a4c44ba98157581582085, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213232129735536765, guid: e54ae63a853a4c44ba98157581582085, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213232129735536765, guid: e54ae63a853a4c44ba98157581582085, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213232129735536765, guid: e54ae63a853a4c44ba98157581582085, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e54ae63a853a4c44ba98157581582085, type: 3}
+--- !u!4 &1515901323 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5213232129735536765, guid: e54ae63a853a4c44ba98157581582085, type: 3}
+  m_PrefabInstance: {fileID: 1515901322}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1521734202
 GameObject:
   m_ObjectHideFlags: 0
@@ -64284,7 +64405,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.033333335
+  m_VoxelSize: 0.06666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: b299886b9f2f45e44b65310915cbba19, type: 2}
   m_BuildHeightMesh: 0

@@ -70,6 +70,7 @@ namespace Psalmhaven
 
             //player face enemy, TODO: enemy too?
             //player.GetComponent<PlayerController>().FaceObject(enemy.transform);
+            if (enemy == null) ReAssignEnemy();
             enemy.IsInCombat = true;
 
             //temporary place
@@ -224,6 +225,11 @@ namespace Psalmhaven
         private void ReAssignPlayer()
         {
             player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        }
+
+        private void ReAssignEnemy()
+        {
+            enemy = GameObject.FindWithTag("Enemy").GetComponent<Enemy>();
         }
 
     }
