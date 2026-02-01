@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f02fe8cb194d8984eb3d116936b292a8, type: 3}
   m_Name: DamagePlayer
   m_EditorClassIdentifier: Assembly-CSharp::DamagePlayer
-  effectName: Damage 10 Point
-  damageValue: 10
+  effectName: Damage 1 Point
+  damageValue: 1

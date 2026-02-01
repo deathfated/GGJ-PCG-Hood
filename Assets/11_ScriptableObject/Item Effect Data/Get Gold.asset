@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac947d1286777cd4bafee7ea96c668cb, type: 3}
-  m_Name: HealPlayer
-  m_EditorClassIdentifier: Assembly-CSharp::HealPlayer
-  effectName: Heal 2 Point
-  healValue: 2
+  m_Script: {fileID: 11500000, guid: c6bad7fee8ac6f04189e43cc2dbcb7cc, type: 3}
+  m_Name: Get Gold
+  m_EditorClassIdentifier: Assembly-CSharp::GetGold
+  effectName: Get 10 Gold
+  goldValue: 10

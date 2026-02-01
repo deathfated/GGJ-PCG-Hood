@@ -17408,6 +17408,10 @@ PrefabInstance:
       propertyPath: itemId
       value: Chest001
       objectReference: {fileID: 0}
+    - target: {fileID: 6415938585635749795, guid: 8aa46abc0d5d68e4699c538903919dae, type: 3}
+      propertyPath: interactEffectData.Array.data[1].interactEffect
+      value: 
+      objectReference: {fileID: 11400000, guid: d286d9e1adb49c74e99da97c1f0f5bbf, type: 2}
     - target: {fileID: 6807011120318480332, guid: 8aa46abc0d5d68e4699c538903919dae, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.052
@@ -58627,7 +58631,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.06666667
+  m_VoxelSize: 0.033333335
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: df8cff8fb500dbc43acd78ae0aff4986, type: 2}
   m_BuildHeightMesh: 0
